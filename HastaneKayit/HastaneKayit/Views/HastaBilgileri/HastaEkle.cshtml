@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "HastaEkle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<form class="form-group" method="post">
+
+    <div>
+        <label>Hasta Adi Soyadi</label>
+        <input type="text" class="form-control" name="HastaAdiSoyadi" required="" />
+    </div>
+    <div>
+        <label>Hasta TC</label>
+        <input type="text" class="form-control" name="HastaTC" required="" />
+    </div>
+    <div>
+        <label>Hasta Cinsiyet</label>
+        @*<select class="form-control" data-placeholder="Please select...">
+            <option>Erkek</option>
+            <option>Kadın</option>
+        </select>*@
+        <input type="text" class="form-control" name="HastaCinsiyet" required="" />
+    </div>
+    <div>
+        <label>Hasta Kan Grubu</label>
+        <select id="kangrubu" class="form-control" data-placeholder="Please select...">
+            <option value="0" >AB+</option>
+            <option value="1" >AB-</option>
+            <option value="2" >A+</option>
+            <option value="3" >A-</option>
+            <option value="4" >B+</option>
+            <option value="5" >B-</option>
+            <option value="6" >0+</option>
+            <option value="7" >0-</option>
+        </select>
+        <input type="text" class="form-control" name="HastaKanGrubu" required="" />
+    </div>
+    <div>
+        <label>Hasta Baba Adı</label>
+        <input type="text" class="form-control" name="HastaBabaAdi" required="" />
+    </div>
+    <div>
+        <label>Hasta Anne Adı</label>
+        <input type="text" class="form-control" name="HastaAnneAdi" required="" />
+    </div>
+    <div>
+        <label>Hasta Doğum Tarihi</label>
+        <input type="date" class="form-control" name="HastaDogumTarihi" required="" />
+    </div>
+    <div>
+        <label>Hasta Cep Telefonu</label>
+        <input type="text" class="form-control" name="HastaCepTelefonu" required="" />
+    </div>
+    <div>
+        <label>Hasta Sabit Telefonu</label>
+        <input type="text" class="form-control" name="HastaSabitTelefonu" required="" />
+    </div>
+    <div>
+        <label>Hasta Adresi</label>
+        <input type="text" class="form-control" name="HastaAdresi" required="" />
+    </div>
+
+    <div style="margin-top:20px">
+        <button class="btn btn-info">Hasta Ekle</button>
+    </div>
+</form>
+

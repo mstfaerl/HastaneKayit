@@ -1,0 +1,41 @@
+﻿@using HastaneKayit.Models.Entity
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Randevu ID</th>
+        <th>Hasta Adı Soyadı</th>
+        <th>Hasta Tc Numarası</th> 
+        <th>Doktor Adı Soyadı</th>
+        <th>Doktor Ünvanı</th>
+        <th>Randevu Saati</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+
+    <tbody>
+        @foreach (var randevu in Model)
+        {
+        <tr>
+            <td>@randevu.RandevuID</td>
+            <td>@randevu.HastaBilgileri.HastaAdiSoyadi</td>
+            <td>@randevu.HastaBilgileri.HastaTC</td>
+            <td>@randevu.DoktorBilgileri.DoktorAdiSoyadi</td>
+            <td>@randevu.DoktorBilgileri.DoktorUnvani</td>
+            <td>@randevu.RandevuTarihSaat</td>
+
+            <td><a href="/Randevu/RandevuSil/@randevu.RandevuID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Randevu/RandevuGetir/@randevu.RandevuID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+        }
+    </tbody>
+
+</table>
+
+<a href="/Randevu/RandevuEkle" class="btn btn-primary">Ekle</a>
+
+

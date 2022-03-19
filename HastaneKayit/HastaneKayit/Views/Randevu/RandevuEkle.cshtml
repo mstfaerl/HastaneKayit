@@ -1,0 +1,28 @@
+﻿@model HastaneKayit.Models.Entity.Randevu
+
+
+@{
+    ViewBag.Title = "RandevuEkle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+    <div>
+        <label>Doktor Adi Soyadi</label>
+        @Html.DropDownListFor(m => m.DoktorBilgileri.DoktorID, (List<SelectListItem>)ViewBag.dktr, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Hasta Adi Soyadi</label>
+        @Html.DropDownListFor(m => m.HastaBilgileri.HastaID, (List<SelectListItem>)ViewBag.hstlr, new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Randevu Tarihi ve Saati</label>
+        <input type="date" class="form-control" name="RandevuTarihSaat" required="" />
+    </div>
+
+    <div style="margin-top:20px">
+        <button class="btn btn-info">Doktor Ekle</button>
+    </div>
+</form>
+

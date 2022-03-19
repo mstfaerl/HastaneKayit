@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HastaneKayitModelStoreContainer" CdmEntityContainer="HastaneKayitEntities">
+    <EntitySetMapping Name="DoktorBilgileri">
+      <EntityTypeMapping TypeName="HastaneKayitModel.DoktorBilgileri">
+        <MappingFragment StoreEntitySet="DoktorBilgileri">
+          <ScalarProperty Name="DoktorID" ColumnName="DoktorID" />
+          <ScalarProperty Name="DoktorAdiSoyadi" ColumnName="DoktorAdiSoyadi" />
+          <ScalarProperty Name="DoktorTC" ColumnName="DoktorTC" />
+          <ScalarProperty Name="DoktorIseGiris" ColumnName="DoktorIseGiris" />
+          <ScalarProperty Name="DoktorUnvani" ColumnName="DoktorUnvani" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HastaBilgileri">
+      <EntityTypeMapping TypeName="HastaneKayitModel.HastaBilgileri">
+        <MappingFragment StoreEntitySet="HastaBilgileri">
+          <ScalarProperty Name="HastaID" ColumnName="HastaID" />
+          <ScalarProperty Name="HastaAdiSoyadi" ColumnName="HastaAdiSoyadi" />
+          <ScalarProperty Name="HastaTC" ColumnName="HastaTC" />
+          <ScalarProperty Name="HastaCinsiyet" ColumnName="HastaCinsiyet" />
+          <ScalarProperty Name="HastaKanGrubu" ColumnName="HastaKanGrubu" />
+          <ScalarProperty Name="HastaBabaAdi" ColumnName="HastaBabaAdi" />
+          <ScalarProperty Name="HastaAnneAdi" ColumnName="HastaAnneAdi" />
+          <ScalarProperty Name="HastaDogumTarihi" ColumnName="HastaDogumTarihi" />
+          <ScalarProperty Name="HastaCepTelefonu" ColumnName="HastaCepTelefonu" />
+          <ScalarProperty Name="HastaSabitTelefonu" ColumnName="HastaSabitTelefonu" />
+          <ScalarProperty Name="HastaAdresi" ColumnName="HastaAdresi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Randevu">
+      <EntityTypeMapping TypeName="HastaneKayitModel.Randevu">
+        <MappingFragment StoreEntitySet="Randevu">
+          <ScalarProperty Name="RandevuID" ColumnName="RandevuID" />
+          <ScalarProperty Name="HastaID" ColumnName="HastaID" />
+          <ScalarProperty Name="DoktorID" ColumnName="DoktorID" />
+          <ScalarProperty Name="RandevuTarihSaat" ColumnName="RandevuTarihSaat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="HastaneKayitModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

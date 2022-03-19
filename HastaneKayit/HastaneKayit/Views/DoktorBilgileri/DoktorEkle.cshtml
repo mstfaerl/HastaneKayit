@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "DoktorEkle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+    <div>
+        <label>Doktor Adi Soyadi</label>
+        <input type="text" class="form-control" name="DoktorAdiSoyadi" required="" />
+    </div>
+    <div>
+        <label>Doktor TC</label>
+        <input type="text" class="form-control" name="DoktorTC" required="" />
+    </div>
+    <div>
+        <label>Doktor İşe Giriş</label>
+        <input type="date" class="form-control" name="DoktorIseGiris" required="" />
+    </div>
+    <div>
+        <label>Doktor Ünvanı</label>
+        <input type="text" class="form-control" name="DoktorUnvani" required="" />
+    </div>
+
+    <div style="margin-top:20px">
+        <button class="btn btn-info">Doktor Ekle</button>
+    </div>
+</form>
+

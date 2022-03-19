@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\HastaneKayit",
+    "\\HastaneKayit\\Controllers",
+    "\\HastaneKayit\\Views",
+    "\\HastaneKayit\\Views\\DoktorBilgileri",
+    "\\HastaneKayit\\Views\\HastaBilgileri",
+    "\\HastaneKayit\\Views\\Home",
+    "\\HastaneKayit\\Views\\Randevu",
+    "\\HastaneKayit\\Views\\Shared"
+  ],
+  "SelectedNode": "\\HastaneKayit\\Views\\Shared\\_Layout.cshtml",
+  "PreviewInSolutionExplorer": false
+}

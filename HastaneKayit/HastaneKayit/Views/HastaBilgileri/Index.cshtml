@@ -1,0 +1,50 @@
+﻿@using HastaneKayit.Models.Entity
+
+@model List<HastaBilgileri>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Hasta Id</th>
+        <th>Hasta Adı Soyadı</th>
+        <th>Hasta Tc Numarası</th>
+        <th>Hasta Cinsiyeti</th>
+        <th>Hasta Kan Grubu</th>
+        <th>Hasta Baba Adı</th>
+        <th>Hasta Anne Adı</th>
+        <th>Hasta Doğum tarihi</th>
+        <th>Hasta Cep Telefonu</th>
+        <th>Hasta Sabit Telefonu</th>
+        <th>Hasta Adres</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+
+    <tbody>
+        @foreach (var hasta in Model)
+        {
+        <tr>
+            <td>@hasta.HastaID</td>
+            <td>@hasta.HastaAdiSoyadi</td>
+            <td>@hasta.HastaTC</td>
+            <td>@hasta.HastaCinsiyet</td>
+            <td>@hasta.HastaKanGrubu</td>
+            <td>@hasta.HastaBabaAdi</td>
+            <td>@hasta.HastaAnneAdi</td>
+            <td>@hasta.HastaDogumTarihi</td>
+            <td>@hasta.HastaCepTelefonu</td>
+            <td>@hasta.HastaSabitTelefonu</td>
+            <td>@hasta.HastaAdresi</td>
+            <td><a href="/HastaBilgileri/HastaSil/@hasta.HastaID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/HastaBilgileri/HastaGetir/@hasta.HastaID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+        }
+    </tbody>
+
+</table>
+
+<a href="/HastaBilgileri/HastaEkle" class="btn btn-primary">Ekle</a>
+

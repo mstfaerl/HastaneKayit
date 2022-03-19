@@ -1,0 +1,31 @@
+﻿@model HastaneKayit.Models.Entity.DoktorBilgileri
+
+@{
+    ViewBag.Title = "DoktorGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("DoktorGuncelle", "DoktorBilgileri", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(k => k.DoktorID)
+        @Html.TextBoxFor(k => k.DoktorID, new { @class = "form-control" })
+
+        @Html.LabelFor(k => k.DoktorAdiSoyadi)
+        @Html.TextBoxFor(k => k.DoktorAdiSoyadi, new { @class = "form-control" })
+
+        @Html.LabelFor(k => k.DoktorTC)
+        @Html.TextBoxFor(k => k.DoktorTC, new { @class = "form-control" })
+
+        @Html.LabelFor(k => k.DoktorIseGiris)
+        @Html.TextBoxFor(k => k.DoktorIseGiris, new { @class = "form-control" })
+
+        @Html.LabelFor(k => k.DoktorUnvani)
+        @Html.TextBoxFor(k => k.DoktorUnvani, new { @class = "form-control" })
+    </div>
+
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+
+}

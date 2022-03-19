@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HastaneKayitModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DoktorBilgileri">
+    <Key>
+      <PropertyRef Name="DoktorID" />
+    </Key>
+    <Property Name="DoktorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoktorAdiSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DoktorTC" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="DoktorIseGiris" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DoktorUnvani" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Randevu" Relationship="Self.FK_Randevu_DoktorBilgileri" FromRole="DoktorBilgileri" ToRole="Randevu" />
+  </EntityType>
+  <EntityType Name="HastaBilgileri">
+    <Key>
+      <PropertyRef Name="HastaID" />
+    </Key>
+    <Property Name="HastaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HastaAdiSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HastaTC" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="HastaCinsiyet" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="HastaKanGrubu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="HastaBabaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HastaAnneAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HastaDogumTarihi" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="HastaCepTelefonu" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="HastaSabitTelefonu" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="HastaAdresi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Randevu" Relationship="Self.FK_Randevu_HastaBilgileri" FromRole="HastaBilgileri" ToRole="Randevu" />
+  </EntityType>
+  <EntityType Name="Randevu">
+    <Key>
+      <PropertyRef Name="RandevuID" />
+    </Key>
+    <Property Name="RandevuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HastaID" Type="Int32" Nullable="false" />
+    <Property Name="DoktorID" Type="Int32" Nullable="false" />
+    <Property Name="RandevuTarihSaat" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="DoktorBilgileri" Relationship="Self.FK_Randevu_DoktorBilgileri" FromRole="Randevu" ToRole="DoktorBilgileri" />
+    <NavigationProperty Name="HastaBilgileri" Relationship="Self.FK_Randevu_HastaBilgileri" FromRole="Randevu" ToRole="HastaBilgileri" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Randevu_DoktorBilgileri">
+    <End Role="DoktorBilgileri" Type="Self.DoktorBilgileri" Multiplicity="1" />
+    <End Role="Randevu" Type="Self.Randevu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoktorBilgileri">
+        <PropertyRef Name="DoktorID" />
+      </Principal>
+      <Dependent Role="Randevu">
+        <PropertyRef Name="DoktorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Randevu_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="1" />
+    <End Role="Randevu" Type="Self.Randevu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="HastaID" />
+      </Principal>
+      <Dependent Role="Randevu">
+        <PropertyRef Name="HastaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HastaneKayitEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DoktorBilgileri" EntityType="Self.DoktorBilgileri" />
+    <EntitySet Name="HastaBilgileri" EntityType="Self.HastaBilgileri" />
+    <EntitySet Name="Randevu" EntityType="Self.Randevu" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_Randevu_DoktorBilgileri" Association="Self.FK_Randevu_DoktorBilgileri">
+      <End Role="DoktorBilgileri" EntitySet="DoktorBilgileri" />
+      <End Role="Randevu" EntitySet="Randevu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Randevu_HastaBilgileri" Association="Self.FK_Randevu_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="Randevu" EntitySet="Randevu" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

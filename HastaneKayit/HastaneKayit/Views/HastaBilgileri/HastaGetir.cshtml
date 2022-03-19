@@ -1,0 +1,50 @@
+﻿@model HastaneKayit.Models.Entity.HastaBilgileri
+
+@{
+    ViewBag.Title = "HastaGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("HastaGuncelle", "HastaBilgileri", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(k => k.HastaID)
+    @Html.TextBoxFor(k => k.HastaID, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.HastaAdiSoyadi)
+    @Html.TextBoxFor(k => k.HastaAdiSoyadi, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.HastaTC)
+    @Html.TextBoxFor(k => k.HastaTC, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.HastaCinsiyet)
+    @Html.TextBoxFor(k => k.HastaCinsiyet, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.HastaKanGrubu)
+    @Html.TextBoxFor(k => k.HastaKanGrubu, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.HastaBabaAdi)
+    @Html.TextBoxFor(k => k.HastaBabaAdi, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.HastaAnneAdi)
+    @Html.TextBoxFor(k => k.HastaAnneAdi, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.HastaDogumTarihi)
+    @Html.TextBoxFor(k => k.HastaDogumTarihi, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.HastaCepTelefonu)
+    @Html.TextBoxFor(k => k.HastaCepTelefonu, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.HastaSabitTelefonu)
+    @Html.TextBoxFor(k => k.HastaSabitTelefonu, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.HastaAdresi)
+    @Html.TextBoxFor(k => k.HastaAdresi, new { @class = "form-control" })
+</div>
+
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+
+}
+

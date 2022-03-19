@@ -1,0 +1,29 @@
+﻿@model HastaneKayit.Models.Entity.Randevu
+@{
+    ViewBag.Title = "RandevuGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("RandevuGuncelle", "Randevu", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(k => k.RandevuID)
+    @Html.TextBoxFor(k => k.RandevuID, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.HastaID)
+    @Html.DropDownListFor(k => k.HastaBilgileri.HastaID, (List<SelectListItem>)ViewBag.hstlr, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.DoktorID)
+    @Html.DropDownListFor(k => k.DoktorBilgileri.DoktorID, (List<SelectListItem>)ViewBag.dktr, new { @class = "form-control" })
+
+    @Html.LabelFor(k => k.RandevuTarihSaat)
+    @Html.TextBoxFor(k => k.RandevuTarihSaat, new { @class = "form-control" })
+</div>
+
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+
+}
+
+

@@ -1,0 +1,40 @@
+﻿@using HastaneKayit.Models.Entity
+
+@model List<DoktorBilgileri>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Doktor Id</th>
+        <th>Doktor Adı Soyadı</th>
+        <th>Doktor Tc Numarası</th>
+        <th>Doktor İşe Giriş</th>
+        <th>Doktor Ünvanı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+
+    <tbody>
+        @foreach (var doktor in Model)
+        {
+        <tr>
+            <td>@doktor.DoktorID</td>
+            <td>@doktor.DoktorAdiSoyadi</td>
+            <td>@doktor.DoktorTC</td>
+            <td>@doktor.DoktorIseGiris</td>
+            <td>@doktor.DoktorUnvani</td>
+            <td><a href="/DoktorBilgileri/DoktorSil/@doktor.DoktorID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/DoktorBilgileri/DoktorGetir/@doktor.DoktorID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+        }
+    </tbody>
+
+</table>
+
+<a href="/DoktorBilgileri/DoktorEkle" class="btn btn-primary">Ekle</a>
+
+

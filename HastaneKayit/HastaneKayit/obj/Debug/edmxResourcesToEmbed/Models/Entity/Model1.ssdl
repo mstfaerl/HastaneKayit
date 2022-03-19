@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HastaneKayitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DoktorBilgileri">
+    <Key>
+      <PropertyRef Name="DoktorID" />
+    </Key>
+    <Property Name="DoktorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoktorAdiSoyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DoktorTC" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="DoktorIseGiris" Type="date" Nullable="false" />
+    <Property Name="DoktorUnvani" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HastaBilgileri">
+    <Key>
+      <PropertyRef Name="HastaID" />
+    </Key>
+    <Property Name="HastaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HastaAdiSoyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HastaTC" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="HastaCinsiyet" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="HastaKanGrubu" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="HastaBabaAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HastaAnneAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="HastaDogumTarihi" Type="date" Nullable="false" />
+    <Property Name="HastaCepTelefonu" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="HastaSabitTelefonu" Type="nchar" MaxLength="20" />
+    <Property Name="HastaAdresi" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Randevu">
+    <Key>
+      <PropertyRef Name="RandevuID" />
+    </Key>
+    <Property Name="RandevuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HastaID" Type="int" Nullable="false" />
+    <Property Name="DoktorID" Type="int" Nullable="false" />
+    <Property Name="RandevuTarihSaat" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Randevu_DoktorBilgileri">
+    <End Role="DoktorBilgileri" Type="Self.DoktorBilgileri" Multiplicity="1" />
+    <End Role="Randevu" Type="Self.Randevu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoktorBilgileri">
+        <PropertyRef Name="DoktorID" />
+      </Principal>
+      <Dependent Role="Randevu">
+        <PropertyRef Name="DoktorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Randevu_HastaBilgileri">
+    <End Role="HastaBilgileri" Type="Self.HastaBilgileri" Multiplicity="1" />
+    <End Role="Randevu" Type="Self.Randevu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HastaBilgileri">
+        <PropertyRef Name="HastaID" />
+      </Principal>
+      <Dependent Role="Randevu">
+        <PropertyRef Name="HastaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HastaneKayitModelStoreContainer">
+    <EntitySet Name="DoktorBilgileri" EntityType="Self.DoktorBilgileri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HastaBilgileri" EntityType="Self.HastaBilgileri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Randevu" EntityType="Self.Randevu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Randevu_DoktorBilgileri" Association="Self.FK_Randevu_DoktorBilgileri">
+      <End Role="DoktorBilgileri" EntitySet="DoktorBilgileri" />
+      <End Role="Randevu" EntitySet="Randevu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Randevu_HastaBilgileri" Association="Self.FK_Randevu_HastaBilgileri">
+      <End Role="HastaBilgileri" EntitySet="HastaBilgileri" />
+      <End Role="Randevu" EntitySet="Randevu" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
